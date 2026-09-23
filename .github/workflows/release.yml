@@ -36,7 +36,7 @@ jobs:
         run: |
           VERSION_TAG="${GITHUB_REF_NAME:-latest}"
           APK_SRC="app/build/outputs/apk/release/app-release.apk"
-          APK_DEST="tiny-game-browser-${VERSION_TAG}.apk"
+          APK_DEST="tinyplay-${VERSION_TAG}.apk"
           if [ -f "$APK_SRC" ]; then
             cp "$APK_SRC" "$APK_DEST"
             echo "apk_path=$APK_DEST" >> $GITHUB_OUTPUT

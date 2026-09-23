@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">网页游戏浏览器</string>
-    <string name="game_hall_title">Tiny Web Games</string>
-    <string name="game_hall_subtitle">平板全屏游戏启动器 · 支持离线秒开</string>
+    <string name="app_name">小轻游</string>
+    <string name="game_hall_title">小轻游 · TinyPlay</string>
+    <string name="game_hall_subtitle">纯净全屏网页游戏容器 · 点开即玩 · 支持离线秒开</string>
     <string name="badge_offline">离线就绪</string>
     <string name="badge_online">在线游玩</string>
     <string name="play_game">进入游戏</string>
