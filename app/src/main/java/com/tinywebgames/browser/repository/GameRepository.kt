@@ -57,8 +57,15 @@ object GameRepository {
                     val repos: List<GitHubRepo> = Gson().fromJson(reposJson, repoType)
                     
                     for (repo in repos) {
-                        // 过滤掉非游戏的元数据仓库（如 .github）
-                        if (repo.name.startsWith(".")) continue
+                        val lowerName = repo.name.lowercase()
+                        // 过滤掉非游戏的系统/工具仓库（如 .github、game-browser 客户端本身等）
+                        if (lowerName.startsWith(".") ||
+                            lowerName == "game-browser" ||
+                            lowerName.contains("browser") ||
+                            lowerName == "android" ||
+                            lowerName == "docs" ||
+                            lowerName == "website"
+                        ) continue
 
                         val preset = localPresetMap[repo.name]
                         val homeUrl = if (!repo.homepage.isNullOrBlank()) repo.homepage else "https://tiny-web-games.github.io/${repo.name}/"
