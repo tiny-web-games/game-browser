@@ -1,0 +1,61 @@
+name: Build & Release Game Browser APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Grant Execute Permission for Gradlew
+        run: chmod +x gradlew
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --stacktrace
+
+      - name: Prepare Release Artifacts
+        id: prepare_artifact
+        run: |
+          VERSION_TAG="${GITHUB_REF_NAME:-latest}"
+          APK_SRC="app/build/outputs/apk/release/app-release.apk"
+          APK_DEST="tiny-game-browser-${VERSION_TAG}.apk"
+          if [ -f "$APK_SRC" ]; then
+            cp "$APK_SRC" "$APK_DEST"
+            echo "apk_path=$APK_DEST" >> $GITHUB_OUTPUT
+            echo "Built APK size: $(ls -lh $APK_DEST | awk '{print $5}')"
+          else
+            echo "Error: Release APK not found at $APK_SRC"
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            ${{ steps.prepare_artifact.outputs.apk_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

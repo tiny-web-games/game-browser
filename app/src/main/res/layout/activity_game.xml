@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- 游戏 WebView -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
+    <!-- 全屏视频/自定义 View 容器 -->
+    <FrameLayout
+        android:id="@+id/customViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:visibility="gone" />
+
+    <!-- 加载指示器 -->
+    <ProgressBar
+        android:id="@+id/loadingBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_gravity="top"
+        android:indeterminate="false"
+        android:max="100"
+        android:progressDrawable="@drawable/bg_badge_offline"
+        android:visibility="gone" />
+
+    <!-- 悬浮控制面板（展开时可见） -->
+    <LinearLayout
+        android:id="@+id/floatingPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_floating_panel"
+        android:elevation="12dp"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <!-- 返回大厅按钮 -->
+        <ImageButton
+            android:id="@+id/btnExitGame"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="退出游戏"
+            android:src="@drawable/ic_close"
+            app:tint="#FF5252" />
+
+        <!-- 刷新游戏按钮 -->
+        <ImageButton
+            android:id="@+id/btnReloadGame"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="重新加载"
+            android:src="@drawable/ic_refresh"
+            app:tint="@color/text_title" />
+
+        <!-- 切换横竖屏按钮 -->
+        <ImageButton
+            android:id="@+id/btnRotateScreen"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="旋转屏幕"
+            android:src="@drawable/ic_screen_rotation"
+            app:tint="@color/primary_accent" />
+
+        <!-- 切换在线/离线源按钮 -->
+        <ImageButton
+            android:id="@+id/btnToggleSource"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="切换在线/离线"
+            android:src="@drawable/ic_globe"
+            app:tint="@color/badge_online_text" />
+
+        <!-- 保存此游戏为离线包按钮 (在线游玩时可见) -->
+        <ImageButton
+            android:id="@+id/btnSaveOffline"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="保存为离线游戏"
+            android:src="@drawable/ic_save"
+            app:tint="#4CD964" />
+    </LinearLayout>
+
+    <!-- 悬浮微型辅助球（常驻半透明，点击展开/收起面板） -->
+    <ImageView
+        android:id="@+id/btnFloatingBall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:alpha="0.4"
+        android:background="@drawable/bg_floating_ball"
+        android:contentDescription="游戏悬浮助手"
+        android:elevation="10dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_gamepad"
+        app:tint="@color/primary_accent" />
+
+</FrameLayout>

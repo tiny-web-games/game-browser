@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <!-- 棋盘网格线 -->
+  <path
+      android:fillColor="#E6A23C"
+      android:pathData="M2,2h20v20H2z"
+      android:strokeWidth="1"
+      android:strokeColor="#C58022"/>
+  <path
+      android:pathData="M7,2v20 M12,2v20 M17,2v20 M2,7h20 M2,12h20 M2,17h20"
+      android:strokeColor="#995E16"
+      android:strokeWidth="0.8"/>
+  <!-- 黑棋子 -->
+  <path
+      android:fillColor="#1A1D24"
+      android:pathData="M7,7m-3.2,0a3.2,3.2 0 1,0 6.4,0a3.2,3.2 0 1,0 -6.4,0"/>
+  <path
+      android:fillColor="#1A1D24"
+      android:pathData="M17,17m-3.2,0a3.2,3.2 0 1,0 6.4,0a3.2,3.2 0 1,0 -6.4,0"/>
+  <!-- 白棋子 -->
+  <path
+      android:fillColor="#FDFBF7"
+      android:pathData="M17,7m-3.2,0a3.2,3.2 0 1,0 6.4,0a3.2,3.2 0 1,0 -6.4,0"/>
+  <path
+      android:fillColor="#FDFBF7"
+      android:pathData="M7,17m-3.2,0a3.2,3.2 0 1,0 6.4,0a3.2,3.2 0 1,0 -6.4,0"/>
+</vector>

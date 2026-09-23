@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">网页游戏浏览器</string>
+    <string name="game_hall_title">Tiny Web Games</string>
+    <string name="game_hall_subtitle">平板全屏游戏启动器 · 支持离线秒开</string>
+    <string name="badge_offline">离线就绪</string>
+    <string name="badge_online">在线游玩</string>
+    <string name="play_game">进入游戏</string>
+    <string name="exit_confirm_title">退出当前游戏？</string>
+    <string name="exit_confirm_message">游戏当前进度可能不会保存，确定要返回大厅吗？</string>
+    <string name="action_exit">退出</string>
+    <string name="action_cancel">继续游玩</string>
+    <string name="action_reload">刷新游戏</string>
+    <string name="action_rotate">旋转方向</string>
+    <string name="mode_offline_hint">当前运行于【离线本地模式】</string>
+    <string name="mode_online_hint">当前运行于【在线网络模式】</string>
+    <string name="add_custom_game">添加自定义游戏</string>
+</resources>

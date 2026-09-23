@@ -1,0 +1,28 @@
+[
+  {
+    "id": "tank",
+    "title": "钢铁咆哮 KV-44 (Tank)",
+    "description": "横版坦克战斗游戏，重装轰击与物理弹道。支持全屏触摸与自适应宽屏游玩。",
+    "orientation": "landscape",
+    "entryPath": "tank/index.html",
+    "remoteUrl": "https://tiny-web-games.github.io/tank/",
+    "downloadUrl": "https://github.com/tiny-web-games/tank/archive/refs/heads/gh-pages.zip",
+    "isOfflineReady": false,
+    "icon": "ic_tank",
+    "author": "tiny-web-games",
+    "version": "0.1.0"
+  },
+  {
+    "id": "go-little-adventure",
+    "title": "围棋小萌主 (Go Adventure)",
+    "description": "专为儿童与初学者打造的趣味围棋启蒙乐园。吃子练习、真假眼判断与趣味对弈闯关。",
+    "orientation": "landscape",
+    "entryPath": "go-little-adventure/index.html",
+    "remoteUrl": "https://tiny-web-games.github.io/go-little-adventure/",
+    "downloadUrl": "https://github.com/tiny-web-games/go-little-adventure/archive/refs/heads/gh-pages.zip",
+    "isOfflineReady": false,
+    "icon": "ic_weiqi",
+    "author": "tiny-web-games",
+    "version": "1.0.0"
+  }
+]

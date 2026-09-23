@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_gamepad"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_gamepad"
+        android:supportsRtl="true"
+        android:hardwareAccelerated="true"
+        android:theme="@style/Theme.GameBrowser">
+
+        <!-- 全面屏高长宽比适配声明 -->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.5" />
+
+        <!-- 游戏大厅页面 -->
+        <activity
+            android:name=".ui.list.GameListActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 全屏沉浸游戏页面 -->
+        <activity
+            android:name=".ui.game.GameActivity"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:theme="@style/Theme.GameBrowser.Fullscreen"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden" />
+
+    </application>
+
+</manifest>

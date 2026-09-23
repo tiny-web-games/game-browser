@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <!-- 顶部类浏览器通用地址栏导航条 -->
+    <LinearLayout
+        android:id="@+id/topBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- 浏览器/大厅 Logo 图标 -->
+        <ImageView
+            android:id="@+id/ivAppLogo"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:contentDescription="Tiny Web Games"
+            android:padding="2dp"
+            android:src="@drawable/ic_gamepad"
+            app:tint="@color/primary_accent" />
+
+        <!-- 浏览器地址栏胶囊 -->
+        <LinearLayout
+            android:id="@+id/addressBarCapsule"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_address_bar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="6dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_globe"
+                app:tint="@color/text_secondary" />
+
+            <!-- URL 地址输入框 -->
+            <EditText
+                android:id="@+id/etUrlInput"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="输入网页游戏网址 (如 https://...)"
+                android:imeOptions="actionGo"
+                android:inputType="textUri"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/text_title"
+                android:textColorHint="#6B7C96"
+                android:textSize="14sp" />
+
+            <!-- 前往按钮 -->
+            <ImageButton
+                android:id="@+id/btnGoUrl"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/bg_floating_ball"
+                android:contentDescription="前往该网址"
+                android:padding="7dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- 刷新云端游戏库按钮 -->
+        <ImageButton
+            android:id="@+id/btnRefreshList"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="刷新清单"
+            android:src="@drawable/ic_refresh"
+            app:tint="@color/text_title" />
+    </LinearLayout>
+
+    <!-- 游戏库小标题栏 (紧随地址栏下方) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvSectionTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🎮 游戏快捷中心 · 支持离线保存"
+            android:textColor="@color/text_title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvGameCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已同步"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- 游戏列表卡片网格 (紧贴标题下方，占满剩余全部高度) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGameList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        tools:listitem="@layout/item_game_card" />
+
+</LinearLayout>
