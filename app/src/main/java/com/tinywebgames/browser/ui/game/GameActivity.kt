@@ -130,6 +130,11 @@ class GameActivity : AppCompatActivity() {
         // 硬件加速
         webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
 
+        // 彻底禁用原生长按交互（防止触发小米 HyperOS / MIUI 传送门、小爱识图、图片保存与复制菜单）
+        webView.isLongClickable = false
+        webView.setOnLongClickListener { true }
+        webView.isHapticFeedbackEnabled = false
+
         // WebClient 配置
         webView.webViewClient = LocalContentWebViewClient(
             context = this,
@@ -138,6 +143,32 @@ class GameActivity : AppCompatActivity() {
             },
             onPageLoadFinish = {
                 binding.loadingBar.visibility = View.GONE
+                // 注入全局防长按、防选中文本与防图片拖拽样式，彻底杜绝游戏内长按呼出系统识图/放大镜
+                webView.evaluateJavascript(
+                    """
+                    (function() {
+                        if (window.__gameAntiLongPressInjected) return;
+                        window.__gameAntiLongPressInjected = true;
+                        
+                        var style = document.createElement('style');
+                        style.type = 'text/css';
+                        style.innerHTML = '* { -webkit-touch-callout: none !important; -webkit-user-select: none !important; user-select: none !important; -webkit-user-drag: none !important; } img, canvas { -webkit-touch-callout: none !important; pointer-events: auto; }';
+                        if (document.head) {
+                            document.head.appendChild(style);
+                        } else {
+                            document.documentElement.appendChild(style);
+                        }
+                        
+                        // 拦截全局 contextmenu
+                        window.addEventListener('contextmenu', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
+                        }, { passive: false, capture: true });
+                    })();
+                    """.trimIndent(),
+                    null
+                )
             }
         )
 
@@ -365,6 +396,11 @@ class GameActivity : AppCompatActivity() {
                 FullscreenHelper.enableImmersiveFullscreen(window)
             }
             .show()
+    }
+
+    override fun onCreateContextMenu(menu: android.view.ContextMenu?, v: View?, menuInfo: android.view.ContextMenu.ContextMenuInfo?) {
+        // 彻底屏蔽原生长按菜单（避免系统弹出保存图片/复制文本/识图）
+        return
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
